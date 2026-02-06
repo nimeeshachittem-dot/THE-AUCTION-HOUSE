@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indian Auction House</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ---------------- HOME PAGE ---------------- -->
+  <div id="home-page">
+    <div class="home-overlay">
+      <h1 class="home-title">🏆 The Auction House</h1>
+      <p class="home-tagline">Bid on your favorite antiques & collectibles!</p>
+      <div class="home-buttons">
+        <button id="userLoginBtn">Login as User</button>
+        <button id="adminLoginBtn">Login as Admin</button>
+        <button id="signupBtn">Sign Up</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------------- APP PAGE ---------------- -->
+  <div id="app-page" style="display:none;">
+    <header>
+      <h1>🏆 The Auction House</h1>
+      <div class="auth-section">
+        <span id="welcome-msg"></span>
+        <button id="logoutBtn" style="display:none;">Logout</button>
+        <button id="adminBtn" style="display:none;">Admin Panel</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Items -->
+      <section class="items-section">
+        <h2>✨ Items for Auction</h2>
+        <div id="items-container" class="items-grid"></div>
+      </section>
+
+      <!-- Bidding -->
+      <section class="bid-section">
+        <h2>💰 Place Your Bid</h2>
+        <form id="bid-form">
+          <label for="item">Select Item:</label>
+          <select id="item"></select>
+          <label for="amount">Your Bid (₹):</label>
+          <input type="number" id="amount" min="1" required>
+          <button type="submit">Submit Bid</button>
+        </form>
+        <p id="login-warning" class="warning">⚠️ Please login to place a bid</p>
+        <h3>Recent Bids</h3>
+        <ul id="bids-list"></ul>
+      </section>
+    </main>
+  </div>
+
+  <!-- ---------------- ADMIN PAGE ---------------- -->
+  <div id="admin-page" style="display:none;">
+    <header>
+      <h1>Admin Panel</h1>
+      <button id="backBtn">Back</button>
+    </header>
+    <main>
+      <h2>All Bids</h2>
+      <ul id="admin-bids-list"></ul>
+
+      <h2>Manage Items</h2>
+      <div class="admin-add-item">
+        <h3>Add New Item</h3>
+        <input type="text" id="newItemName" placeholder="Item Name">
+        <input type="number" id="newItemPrice" placeholder="Starting Price">
+        <input type="text" id="newItemImage" placeholder="Image URL">
+        <button id="addItemBtn">Add Item</button>
+      </div>
+
+      <div id="admin-items-container" class="items-grid"></div>
+
+      <button id="resetAuctionBtn" class="reset-btn">Reset Auction</button>
+    </main>
+  </div>
+
+  <!-- ---------------- AUTH MODAL ---------------- -->
+  <div id="auth-modal" class="modal">
+    <div class="modal-content">
+      <span id="close-modal" class="close">&times;</span>
+      <h2 id="modal-title">Login</h2>
+      <form id="auth-form">
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <input type="hidden" id="role" value="user"> <!-- default role -->
+        <button type="submit">Submit</button>
+      </form>
+      <p id="switchToSignup" style="text-align:center; cursor:pointer;">Don’t have an account? <b>Sign Up</b></p>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
